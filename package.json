@@ -1,0 +1,47 @@
+{
+  "name": "my-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.3.0",
+    "@mui/material": "^6.3.0",
+    "@react-spring/web": "^9.7.5",
+    "@types/highcharts": "^5.0.44",
+    "axios": "^1.7.9",
+    "classnames": "^2.5.1",
+    "highcharts": "^11.4.7",
+    "highcharts-react-official": "^3.2.1",
+    "i18next-browser-languagedetector": "^8.0.2",
+    "next": "15.1.2",
+    "next-i18next": "^15.4.1",
+    "openai": "^4.83.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/merge-deep": "^3.0.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "css-loader": "^7.1.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "merge-deep": "^3.0.3",
+    "postcss": "^8",
+    "sass": "^1.83.1",
+    "sass-loader": "^16.0.4",
+    "scss-loader": "^0.0.1",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
