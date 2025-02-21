@@ -7,7 +7,7 @@ interface ILayout {
     children?: React.ReactNode;
 }
 const Layout: React.FC<ILayout> = ({ children }) => {
-    return (<Box sx={{ bgcolor: 'rgba(237, 239, 241)', height: '100vh' }} padding={"0px"}>
+    return (<Box sx={{ bgcolor: 'rgba(237, 239, 241)' }} padding={"0px"}>
         <Header></Header>
         {children}
     </Box>)

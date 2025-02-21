@@ -47,7 +47,7 @@ const ColumnChart = () => {
             type: "column",
             stacking: 'normal',
             showInLegend: false,
-            borderRadius: 4,
+            borderRadius: 6,
             name: "click",
             color: "rgb(239, 240, 245)",
             data: [3, 6, 4, 6, 5, 6, 5, 6, 4, 6, 2, 6]
