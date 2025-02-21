@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import { Box, Avatar, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Avatar, Typography, Button, AvatarGroup } from '@mui/material';
 import CapsuleTab from "@app/components/common/capsuleTab";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -9,6 +9,8 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Grid from '@mui/material/Grid2';
 import MapChart from './mapChart';
 import ColumnChart from "./columnChart";
+import ZoneChart from './zoneChart';
+import BubbleChart from './bubbleChart';
 import CountriesProgress from './countriesProgress';
 import Card from './card';
 
@@ -18,6 +20,11 @@ interface IDashboard {
 }
 const Dashboard: React.FC<IDashboard> = () => {
     const LOGO_COLOR = "#1976d2";
+    const [dateType, setDateType] = useState(7);
+
+    const onDateTypeChange = (value: string) => {
+        setDateType(value === "month" ? 14 : 7);
+    }
     return <Grid container direction={"column"} spacing={"15px"} width={"100vw"}>
         <Grid container sx={{ flex: 1.5 }} borderRadius={6} spacing={"15px"} margin={"0 15px"}>
             <Grid container size={2} justifyContent={"space-between"}>
@@ -34,15 +41,17 @@ const Dashboard: React.FC<IDashboard> = () => {
                     </Button>
                 </Grid>
                 <ColumnChart></ColumnChart>
-
             </Grid>
             <Grid size={6} sx={{ backgroundColor: "#fff", padding: "15px" }} borderRadius={6}>
-
                 <Grid container sx={{ alignItems: "flex-start", justifyContent: "space-between" }}>
                     <Grid size={6}><Typography sx={{ color: "#000" }} fontSize={16}>Audience Growth</Typography></Grid>
                     <Grid>
-                        <CapsuleTab size="small" showBorder options={[{ name: "This Week", value: "week" }, { name: "This Month", value: "month" }]}></CapsuleTab>
+                        <CapsuleTab size="small" showBorder options={[{ name: "Recent 7 Days", value: "week" }, { name: "Recent 14 Days", value: "month" }]} onChange={onDateTypeChange}></CapsuleTab>
                     </Grid>
+
+                </Grid>
+                <Grid>
+                    <ZoneChart currentDay={dateType}></ZoneChart>
                 </Grid>
             </Grid>
         </Grid>
@@ -57,6 +66,7 @@ const Dashboard: React.FC<IDashboard> = () => {
             <Grid container direction={"column"} size={2.5} justifyContent={"space-between"}>
                 <Grid flex={1} size={12} sx={{ backgroundColor: "#fff", padding: "15px" }} borderRadius={6}>
                     <Typography sx={{ color: "#000" }} fontSize={14}>Sentiment Analysis</Typography>
+                    <BubbleChart></BubbleChart>
                 </Grid>
                 <Grid size={12} sx={{ backgroundColor: "#fff", padding: "15px" }} borderRadius={6}>
                     <Typography sx={{ color: "#000" }} fontSize={14}>Total Customers</Typography>
@@ -68,11 +78,14 @@ const Dashboard: React.FC<IDashboard> = () => {
                         </Button>
                     </Box>
                     <Box sx={{ display: "flex" }} marginTop={"10px"}>
-                        {
-                            [1, 2, 3, 4, 5].map((_, index) => {
-                                return <Avatar key={index} alt="" src={`/images/avatar${index}.jpg`} sx={{ width: 30, height: 30, marginLeft: `${index == 0 ? 0 : "-5px"}`, border: "2px solid #fff", zIndex: `${Math.abs(5 - index)}` }}></Avatar>
-                            })
-                        }
+                        <AvatarGroup>
+                            {
+                                [1, 2, 3, 4].map((_, index) => {
+                                    return <Avatar key={index} alt="" src={`/images/avatar${index}.jpg`} sx={{ width: 30, height: 30, marginLeft: `${index == 0 ? 0 : "-5px"}`, border: "2px solid #fff", zIndex: `${Math.abs(5 - index)}` }}></Avatar>
+                                })
+                            }
+
+                        </AvatarGroup>
                     </Box>
                     <Button sx={{ height: "26px", marginTop: "10px", backgroundColor: "#fff", color: "#000", border: "1px solid #eee", borderRadius: "15px" }}>
                         <Typography fontSize={12}>{'show all'}</Typography>

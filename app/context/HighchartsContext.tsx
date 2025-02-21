@@ -8,8 +8,8 @@ import tiledwebmap from 'highcharts/modules/tiledwebmap';
 const HighchartsContext = createContext<typeof Highcharts | null>(null);
 
 if (typeof Highcharts !== undefined) {
-    HighchartsMap(Highcharts);
-    tiledwebmap(Highcharts);
+    HighchartsMap?.(Highcharts);
+    tiledwebmap?.(Highcharts);
 }
 
 export const HighchartsProvider = ({ children }: { children: ReactNode }) => {

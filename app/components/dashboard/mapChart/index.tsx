@@ -15,11 +15,10 @@ const MapChart = () => {
             const _mapOptions: any = {
                 chart: {
                     map: mapRef.current,
-                    height: 470,
+                    height: 550,
                     spacing: 0,
                     margin: 0,
                     borderRadius: "10px",
-                    // backgroundColor: "rgb(170, 211, 223)"
                 },
                 credits: {
                     enabled: false

@@ -15,9 +15,10 @@ interface ICapsuleTab {
     options: ICapsuleOptions[];
     showBorder?: boolean;
     size?: "small" | "regular";
+    onChange?: Function
 }
 
-const CapsuleTab: React.FC<ICapsuleTab> = ({ options, bgColor, size = "regular", showBorder, highlightColor }) => {
+const CapsuleTab: React.FC<ICapsuleTab> = ({ options, bgColor, size = "regular", showBorder, highlightColor, onChange }) => {
     const HEIGHT = {
         "small": "40px",
         "regular": "50px"
@@ -35,6 +36,7 @@ const CapsuleTab: React.FC<ICapsuleTab> = ({ options, bgColor, size = "regular",
     const highlightRef = useRef<any>(null);
     const handleActiveTab = (activeTab: string) => {
         setActiveTab(activeTab);
+        onChange?.(activeTab);
     }
 
     useEffect(() => {
